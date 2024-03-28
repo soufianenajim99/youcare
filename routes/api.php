@@ -26,11 +26,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/orgas',[OrganisateurController::class,'index']);
 Route::post('/orgas',[OrganisateurController::class,'store']);
+Route::get('/mycond',[OrganisateurController::class,'myCond']);
 
 
 
 Route::get('/benes',[BenevoleController::class,'index']);
 Route::post('/benes',[BenevoleController::class,'store']);
+Route::post('/reserve/{id}',[BenevoleController::class,'reserve']);
 
 
 Route::get('/anno',[AnnonceController::class,'index']);

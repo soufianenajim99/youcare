@@ -21,9 +21,9 @@ class Annonce extends Model
         return $this->belongsTo(Organisateur::class);
     }
 
-    public function benevole(): BelongsToMany
+    public function benevoles(): BelongsToMany
     {
-        // return $this->belongsToMany(benevole::class);
-        return $this->belongsToMany(benevole::class,'condidature')->withPivot('validated_at')->as('condidature')->withTimestamps()->using(Condidature::class);
+      
+        return $this->belongsToMany(Benevole::class,'condidature')->withPivot('validated_at')->as('condidature')->withTimestamps()->using(Condidature::class);
     }
 }
