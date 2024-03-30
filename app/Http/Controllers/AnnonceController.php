@@ -7,6 +7,44 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+  /**
+     * @OA\Post(
+     *     path="/api/anno",
+     *     tags={"Annonce"},
+     *     operationId="Annonce",
+     *     summary="Create a new Annonce",
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="Annonce's title",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="Annonce's description",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="date",
+     *         in="query",
+     *         description="Annonce's date",
+     *         required=true,
+     *         @OA\Schema(type="date")
+     *     ),
+     *     @OA\Parameter(
+     *          name="location",
+     *          in="query",
+     *          description="Annonce's location",
+     *          required=true,
+     *          @OA\Schema(type="string")
+     *      ),
+     *     @OA\Response(response="201", description="Annonce created successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     */
 class AnnonceController extends Controller
 {
     // public function __construct()
