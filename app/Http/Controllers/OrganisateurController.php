@@ -9,7 +9,87 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-
+/**
+     * @OA\Post(
+     *     path="/api/orgas",
+     *     tags={"Organisateur"},
+     *     operationId="Organisateur",
+     *     summary="Organisateur",
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="user Email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="user name",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User Password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="Organisateur registered successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     * @OA\Post(
+     *     path="/api/annonce",
+     *     tags={"Annonce"},
+     *     operationId="Annonce_cre",
+     *     summary="Annonce",
+     *     @OA\Parameter(
+     *         name="titre",
+     *         in="query",
+     *         description="titre d'annonce",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="description",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="localisation",
+     *         in="query",
+     *         description="localisation",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="date",
+     *         in="query",
+     *         description="date",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="comps",
+     *         in="query",
+     *         description="comps",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="organisateur_id",
+     *         in="query",
+     *         description="organisateur_id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="Creation d'une annonce"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     */
 class OrganisateurController extends Controller
 {
     public function __construct()

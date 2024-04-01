@@ -59,6 +59,245 @@
                     }
                 }
             }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Log a User",
+                "operationId": "Login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user Email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User Logged successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/benne": {
+            "post": {
+                "tags": [
+                    "Benevole"
+                ],
+                "summary": "Benevole",
+                "operationId": "Benevole",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user Email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Benevole registered successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/reserve": {
+            "post": {
+                "tags": [
+                    "Benevole"
+                ],
+                "summary": "Benevole",
+                "operationId": "Reservation",
+                "parameters": [
+                    {
+                        "name": "benevole_id",
+                        "in": "query",
+                        "description": "benevole_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "annonce_id",
+                        "in": "query",
+                        "description": "annonce_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Reservation created successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/orgas": {
+            "post": {
+                "tags": [
+                    "Organisateur"
+                ],
+                "summary": "Organisateur",
+                "operationId": "Organisateur",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user Email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User Password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Organisateur registered successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/annonce": {
+            "post": {
+                "tags": [
+                    "Annonce"
+                ],
+                "summary": "Annonce",
+                "operationId": "Annonce_cre",
+                "parameters": [
+                    {
+                        "name": "titre",
+                        "in": "query",
+                        "description": "titre d'annonce",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "localisation",
+                        "in": "query",
+                        "description": "localisation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "comps",
+                        "in": "query",
+                        "description": "comps",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "organisateur_id",
+                        "in": "query",
+                        "description": "organisateur_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Creation d'une annonce"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
         }
     },
     "components": {

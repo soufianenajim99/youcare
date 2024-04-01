@@ -6,6 +6,30 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+  /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     tags={"Login"},
+     *     operationId="Login",
+     *     summary="Log a User",
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="user Email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User Password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="User Logged successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     */
 
 class AuthController extends Controller
 {

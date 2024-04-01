@@ -7,7 +7,59 @@ use App\Models\Condidature;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+/**
+     * @OA\Post(
+     *     path="/api/benne",
+     *     tags={"Benevole"},
+     *     operationId="Benevole",
+     *     summary="Benevole",
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="user Email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="user name",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User Password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="Benevole registered successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     * @OA\Post(
+     *     path="/api/reserve",
+     *     tags={"Benevole"},
+     *     operationId="Reservation",
+     *     summary="Benevole",
+     *     @OA\Parameter(
+     *         name="benevole_id",
+     *         in="query",
+     *         description="benevole_id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="annonce_id",
+     *         in="query",
+     *         description="annonce_id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="Reservation created successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     */
 class BenevoleController extends Controller
 {
     public function __construct()
