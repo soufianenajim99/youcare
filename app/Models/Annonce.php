@@ -15,6 +15,7 @@ class Annonce extends Model
         'localisation',
         'date',
         'comps',
+        'organisateur_id'
     ];
 
     public function organisateur(){

@@ -48,12 +48,3 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('refresh', [AuthController::class,'refresh']);
 Route::post('logout', [AuthController::class,'logout']);
-
-
-
-
-// Route::get('/orgas',function () {
-//     if (Gate::allows('is_organisateur')) {
-//         [OrganisateurController::class,'index'];
-    
-// });
