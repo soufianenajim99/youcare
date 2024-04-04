@@ -22,13 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Gate::define('is_organisateur',
-        //  function (User $user) {
-        //     $user->organisateur()->first();
-        //  });
          Gate::define('is_organisateur', function (User $user) {
             return $user->organisateur()->first();
         });
-        // Gate::define('volunteer', fn(User $user) => $user->benevole()->first());
+         Gate::define('is_benevole', function (User $user) {
+            return $user->benevole()->first();
+        });
     }
 }

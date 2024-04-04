@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Annonce;
 use App\Models\Condidature;
 use App\Models\Organisateur;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 /**
      * @OA\Post(
@@ -134,12 +136,28 @@ class OrganisateurController extends Controller
     }
 
     public function myCond(){
-        $conds = Condidature::all();
+        if (! Gate::allows('is_organisateur')) {
+            return response()->json([
+                'message'=> 'Access Denied For This user',
+                'user'=>Auth::guard('api')->user()
+            ],403);
+        }
+        $conds = DB::table('condidatures')
+            ->join('annonces', 'condidatures.annonce_id', '=', 'annonces.id')
+            ->where('annonces.organisateur_id', Auth::guard('api')->user()->organisateur()->first()->id)
+            ->get();
+        // $conds = Condidature::all();
         return response()->json($conds);
     }
 
 
     public function accdem(string $id){
+        if (! Gate::allows('is_organisateur')) {
+            return response()->json([
+                'message'=> 'Access Denied For This user',
+                'user'=>Auth::guard('api')->user()
+            ],403);
+        }
         $cond = Condidature::findOrFail($id);
 
         $cond->validated_at = Carbon::now();
@@ -149,6 +167,12 @@ class OrganisateurController extends Controller
             'condidature'=>$cond]);
     }
     public function refdem(string $id){
+        if (! Gate::allows('is_organisateur')) {
+            return response()->json([
+                'message'=> 'Access Denied For This user',
+                'user'=>Auth::guard('api')->user()
+            ],403);
+        }
         $cond = Condidature::findOrFail($id);
        
         $cond->delete();
@@ -156,8 +180,26 @@ class OrganisateurController extends Controller
             'message'=>'Condidature Supprimee',
             'condidature'=>$cond]);
     }
-    
 
+    
+    
+    public function deleteAnnonce(string $id){
+          $annonce =Annonce::findOrFail($id);
+          if(Auth::guard('api')->user()->organisateur()->id == $annonce->organisateur_id){
+              $annonce->delete();
+              return response()->json([
+                'message'=>'Annonce Supprimee',
+                'Annonce'=>$annonce]);
+
+          }else{
+            return response()->json([
+                'message'=> 'Access Denied For This user',
+                'user'=>Auth::guard('api')->user()
+            ],403);
+
+          }
+
+    }
     
 
 }

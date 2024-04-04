@@ -44,13 +44,21 @@ use Illuminate\Support\Facades\Gate;
      *     @OA\Response(response="201", description="Annonce created successfully"),
      *     @OA\Response(response="422", description="Validation errors")
      * )
+     * @OA\GET(
+     *     path="/api/anno",
+     *     tags={"Annonce"},
+     *     operationId="Display_Annonce",
+     *     summary="affichage des Annonces",
+     *     @OA\Response(response="201", description="Affichage des Annonces"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
      */
 class AnnonceController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
     
     public function index(Request $request){
         $anns= Annonce::all();
@@ -59,6 +67,10 @@ class AnnonceController extends Controller
                  ->orWhereRaw('LOWER(localisation) LIKE ?', ['%' . strtolower($request->input) . '%'])
                  ->get();
           }
+        if($request->limit){
+            $anns = Annonce::take($request->limit)->get();
+          }
+        
      
         return response()->json($anns);
     }

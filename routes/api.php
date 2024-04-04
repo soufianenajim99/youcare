@@ -27,8 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/orgas',[OrganisateurController::class,'index']);
 Route::post('/orgas',[OrganisateurController::class,'store']);
 Route::get('/mycond',[OrganisateurController::class,'myCond']);
-Route::get('/accdem/{id}',[OrganisateurController::class,'accdem']);
-Route::get('/refdem/{id}',[OrganisateurController::class,'refdem']);
+Route::post('/accdem/{id}',[OrganisateurController::class,'accdem']);
+Route::post('/refdem/{id}',[OrganisateurController::class,'refdem']);
 
 
 

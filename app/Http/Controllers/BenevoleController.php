@@ -7,6 +7,8 @@ use App\Models\Condidature;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 /**
      * @OA\Post(
      *     path="/api/benne",
@@ -56,7 +58,16 @@ use Illuminate\Support\Facades\Auth;
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     * 
      *     @OA\Response(response="201", description="Reservation created successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     *    @OA\GET(
+     *     path="/api/bene",
+     *     tags={"Benevole"},
+     *     operationId="Display_Benevole",
+     *     summary="affichage des Benevoles",
+     *     @OA\Response(response="201", description="Affichage des Benevoles"),
      *     @OA\Response(response="422", description="Validation errors")
      * )
      */
@@ -93,6 +104,13 @@ class BenevoleController extends Controller
     }
 
     public function reserve(string $id){
+
+        if (! Gate::allows('is_benevole')) {
+            return response()->json([
+                'message'=> 'Access Denied For This user',
+                'user'=>Auth::guard('api')->user()
+            ],403);
+        }
         $cond = new Condidature;
         $cond->benevole_id = Auth::guard('api')->user()->benevole()->first()->id;
         $cond->annonce_id = $id;

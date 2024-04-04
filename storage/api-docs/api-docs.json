@@ -6,6 +6,21 @@
     },
     "paths": {
         "/api/anno": {
+            "get": {
+                "tags": [
+                    "Annonce"
+                ],
+                "summary": "affichage des Annonces",
+                "operationId": "Display_Annonce",
+                "responses": {
+                    "201": {
+                        "description": "Affichage des Annonces"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Annonce"
@@ -173,6 +188,23 @@
                 "responses": {
                     "201": {
                         "description": "Reservation created successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/bene": {
+            "get": {
+                "tags": [
+                    "Benevole"
+                ],
+                "summary": "affichage des Benevoles",
+                "operationId": "Display_Benevole",
+                "responses": {
+                    "201": {
+                        "description": "Affichage des Benevoles"
                     },
                     "422": {
                         "description": "Validation errors"
