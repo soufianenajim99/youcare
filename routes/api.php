@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,17 @@ Route::post('/anno',[AnnonceController::class,'store']);
 
 
 
+//Get current User Authenticated
+Route::get('/user', function () {
+    
+    return response()->json([
+        'user' => Auth::guard('api')->user(),
+    ]);
+});
+
 
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('refresh', [AuthController::class,'refresh']);
-Route::post('logout', [AuthController::class,'logout']);
+Route::get('logout', [AuthController::class,'logout']);
