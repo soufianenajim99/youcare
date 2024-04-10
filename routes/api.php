@@ -46,7 +46,7 @@ Route::post('/anno',[AnnonceController::class,'store']);
 //Get current User Authenticated
 Route::get('/user', function () {
     return response()->json([
-        'user' => Auth::guard('api')->user(),
+        'user' => Auth::guard('api')->user()->load(['benevole', 'organisateur']),
     ]);
 });
 
