@@ -45,7 +45,6 @@ Route::post('/anno',[AnnonceController::class,'store']);
 
 //Get current User Authenticated
 Route::get('/user', function () {
-    
     return response()->json([
         'user' => Auth::guard('api')->user(),
     ]);
@@ -56,4 +55,5 @@ Route::get('/user', function () {
 Route::post('register',[AuthController::class,'register']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('refresh', [AuthController::class,'refresh']);
+Route::post('update', [AuthController::class,'update']);
 Route::get('logout', [AuthController::class,'logout']);

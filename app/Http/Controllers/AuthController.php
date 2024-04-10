@@ -114,6 +114,13 @@ class AuthController extends Controller
         ]);
     }
 
+    public function update(Request $request){
+        $user = User::findOrFail(Auth::guard('api')->user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+    }
+
 
 
 }
