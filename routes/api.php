@@ -28,8 +28,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/orgas',[OrganisateurController::class,'index']);
 Route::post('/orgas',[OrganisateurController::class,'store']);
 Route::get('/mycond',[OrganisateurController::class,'myCond']);
+
+
+
+
 Route::post('/accdem/{id}',[OrganisateurController::class,'accdem']);
 Route::post('/refdem/{id}',[OrganisateurController::class,'refdem']);
+Route::delete('/delete/{id}',[OrganisateurController::class,'deleteAnnonce']);
 
 
 
@@ -39,6 +44,7 @@ Route::post('/reserve/{id}',[BenevoleController::class,'reserve']);
 
 
 Route::get('/anno',[AnnonceController::class,'index']);
+Route::get('/myanno/{id}',[AnnonceController::class,'myanno']);
 Route::post('/anno',[AnnonceController::class,'store']);
 
 

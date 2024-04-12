@@ -151,6 +151,11 @@ class OrganisateurController extends Controller
     }
 
 
+    
+
+
+
+
     public function accdem(string $id){
         if (! Gate::allows('is_organisateur')) {
             return response()->json([
@@ -185,7 +190,7 @@ class OrganisateurController extends Controller
     
     public function deleteAnnonce(string $id){
           $annonce =Annonce::findOrFail($id);
-          if(Auth::guard('api')->user()->organisateur()->id == $annonce->organisateur_id){
+          if(Auth::guard('api')->user()->organisateur()->first()->id == $annonce->organisateur_id){
               $annonce->delete();
               return response()->json([
                 'message'=>'Annonce Supprimee',

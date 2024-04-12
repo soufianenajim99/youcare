@@ -95,4 +95,9 @@ class AnnonceController extends Controller
             'message'=>'Annonce Ajoutee'
         ],201);
     }
+
+    public function myanno(string $id){
+        $anns= Annonce::where('organisateur_id',$id)->get();
+        return response()->json($anns);
+    }
 }
