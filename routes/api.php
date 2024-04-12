@@ -35,6 +35,7 @@ Route::get('/mycond',[OrganisateurController::class,'myCond']);
 Route::post('/accdem/{id}',[OrganisateurController::class,'accdem']);
 Route::post('/refdem/{id}',[OrganisateurController::class,'refdem']);
 Route::delete('/delete/{id}',[OrganisateurController::class,'deleteAnnonce']);
+Route::patch('/updatean',[OrganisateurController::class,'updateAnn']);
 
 
 

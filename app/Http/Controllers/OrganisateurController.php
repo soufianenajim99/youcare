@@ -205,6 +205,20 @@ class OrganisateurController extends Controller
           }
 
     }
+
+    public function updateAnn(Request $request){
+        $annonce =Annonce::findOrFail($request->id);
+        $annonce->titre=$request->titre;
+        $annonce->description=$request->description;
+        $annonce->localisation=$request->localisation;
+        $annonce->date=$request->date;
+        $annonce->comps=$request->comps;
+        $annonce->save();
+        return response()->json([
+            'message'=>'Annonce Ajoutee'
+        ],201);
+       
+    }
     
 
 }
